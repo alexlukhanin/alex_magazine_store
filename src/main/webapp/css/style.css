@@ -1,0 +1,52 @@
+h1 {color: darkblue}
+
+.headerTitle{
+    color: darkorange;
+}
+
+.headerDiv {
+    background: black;
+    height: 70px;
+    width: auto;
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
+.footerDiv {
+    background: black;
+    height: auto;
+    width: auto;
+}
+
+.mainDiv {
+    background: cornsilk;
+    height: 400px;
+    width: auto;
+    padding-top: 10px;
+    padding-left: 30px;
+}
+#registrationForm {
+    height: 250px;
+    width: 400px;
+    border: solid darkorange 2px;
+    padding-top: 20px;
+    padding-left: 10px;
+}
+
+#loginForm {
+    height: 150px;
+    width: 400px;
+    border: solid darkorange 2px;
+    padding-top: 20px;
+    padding-left: 10px;
+}
+
+.loginInput {
+    margin-left: 32px;
+    width: 250px;
+}
+.passInput {
+    margin-left: 10px;
+    width: 250px;
+}
+
