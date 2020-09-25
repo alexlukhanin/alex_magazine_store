@@ -5,6 +5,6 @@
     <title>Footer</title>
 </head>
 <body>
-    <h2>Footer</h2>
+    <h2 style="color: darkorange; margin-left: 30px">Welcome!</h2>
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 <html>
 <body>
 <link rel="stylesheet" type="text/css" href="css\style.css">
@@ -7,17 +8,13 @@
 </div>
 
 <div class="mainDiv">
+    <a href="/login.jsp">Login</a>
+    <a href="/registration.jsp">Registration</a>
+
     <h2>Welcome!</h2>
-    <h3> Login, please </h3>
-    <form action="login" method="post" id="loginForm">
 
-        <label for="login">Login:</label>  <input type="text" name="login" class="loginInput">
-        <br><br>
-        <label for="password">Password:</label>  <input type="password" name="password" class="passInput">
-        <br><br>
-        <input type="submit" value="Submit">
-    </form>
 
+    <img src="images/photo1.jpg" alt="magazines" id="photo1">
     <p>
         Entered the page at <%= new java.util.Date() %>
     </p>
