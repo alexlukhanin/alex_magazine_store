@@ -27,7 +27,8 @@ public class RegistrationServlet extends HttpServlet {
         session.setAttribute("userLastName", lastName);
         session.setAttribute("userPassword", password);
 
-        request.getRequestDispatcher("cabinet.jsp").forward(request, response);
+       // request.getRequestDispatcher("cabinet.jsp").forward(request, response);
+        response.sendRedirect("/cabinet.jsp");
     }
 
 

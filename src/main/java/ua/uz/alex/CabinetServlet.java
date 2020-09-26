@@ -27,7 +27,8 @@ public class CabinetServlet extends HttpServlet {
         session.setAttribute("userLastName", lastName);
         session.setAttribute("userPassword", password);
 
-        request.getRequestDispatcher("/").forward(request, response);
+       // request.getRequestDispatcher("/").forward(request, response);
+        response.sendRedirect("/");
     }
 
 
