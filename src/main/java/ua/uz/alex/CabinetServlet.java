@@ -1,5 +1,8 @@
 package ua.uz.alex;
 
+import ua.uz.alex.domain.User;
+import ua.uz.alex.service.UserFormService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,21 +14,23 @@ import java.io.IOException;
 @WebServlet("/cabinet")
 public class CabinetServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private UserService userService = UserService.getUserService();
+    private UserFormService userFormServiceService = UserFormService.getUserService();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String role = request.getParameter("role");
 
-        userService.saveUser(new User(firstName, lastName, email, password));
+        userFormServiceService.saveUser(new User(firstName, lastName, email, password, role));
 
         HttpSession session = request.getSession(true);
         session.setAttribute("userEmail", email);
         session.setAttribute("userFirstName", firstName);
         session.setAttribute("userLastName", lastName);
         session.setAttribute("userPassword", password);
+        session.setAttribute("role", role);
 
        // request.getRequestDispatcher("/").forward(request, response);
         response.sendRedirect("/");

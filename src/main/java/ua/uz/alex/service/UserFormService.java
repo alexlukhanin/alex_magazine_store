@@ -1,18 +1,20 @@
-package ua.uz.alex;
+package ua.uz.alex.service;
+
+import ua.uz.alex.domain.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserService {
+public class UserFormService {
     private List<User> listOfUsers = new ArrayList<>();
     /*-------Pattern Singleton -----------*/
-    private static ua.uz.alex.UserService userService;
-    private UserService() {}
-    public static ua.uz.alex.UserService getUserService() {
-        if (userService == null) {
-            userService = new ua.uz.alex.UserService();
+    private static UserFormService userFormServiceService;
+    private UserFormService() {}
+    public static UserFormService getUserService() {
+        if (userFormServiceService == null) {
+            userFormServiceService = new UserFormService();
         }
-        return userService;
+        return userFormServiceService;
     }
 
 
