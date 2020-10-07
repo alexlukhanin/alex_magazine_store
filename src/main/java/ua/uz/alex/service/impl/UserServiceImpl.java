@@ -28,7 +28,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User read(Integer id) {
-        return userDao.read(id);
+        return null;
+    }
+
+    @Override
+    public User read(String email) {
+        return null;
     }
 
     @Override

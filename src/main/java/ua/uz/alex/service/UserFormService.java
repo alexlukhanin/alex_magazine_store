@@ -8,13 +8,13 @@ import java.util.List;
 public class UserFormService {
     private List<User> listOfUsers = new ArrayList<>();
     /*-------Pattern Singleton -----------*/
-    private static UserFormService userFormServiceService;
+    private static UserFormService userFormService;
     private UserFormService() {}
     public static UserFormService getUserService() {
-        if (userFormServiceService == null) {
-            userFormServiceService = new UserFormService();
+        if (userFormService == null) {
+            userFormService = new UserFormService();
         }
-        return userFormServiceService;
+        return userFormService;
     }
 
 

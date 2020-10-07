@@ -12,7 +12,7 @@ public class ConnectionUtils {
 	
 	
 	public static Connection openConnection() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-		Class.forName ("com.mysql.cj.jdbc.Driver").newInstance (); // not necessary for Java 6 and above
+		Class.forName ("com.mysql.cj.jdbc.Driver").newInstance ();
 		return DriverManager.getConnection (URL, USER_NAME, USER_PASSWORD);
 	}
 }

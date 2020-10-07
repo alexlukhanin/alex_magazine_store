@@ -69,6 +69,11 @@ public class BucketDaoImpl implements BucketDao {
     }
 
     @Override
+    public Bucket read(String string) {
+        throw new IllegalStateException("there is no need to read by string yet");
+    }
+
+    @Override
     public Bucket update(Bucket bucket) {
         throw new IllegalStateException("there is no update for bucket");
        // return null;

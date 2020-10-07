@@ -28,7 +28,12 @@ public class BucketServiceImpl implements BucketService {
 
     @Override
     public Bucket read(Integer id) {
-        return bucketDao.read(id);
+        return null;
+    }
+
+    @Override
+    public Bucket read(String email) {
+        return null;
     }
 
     @Override

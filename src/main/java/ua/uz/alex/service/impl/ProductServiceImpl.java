@@ -28,8 +28,14 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product read(Integer id) {
-        return productDao.read(id);
+        return null;
     }
+
+    @Override
+    public Product read(String name) {
+        return null;
+    }
+
 
     @Override
     public Product update(Product t) {
