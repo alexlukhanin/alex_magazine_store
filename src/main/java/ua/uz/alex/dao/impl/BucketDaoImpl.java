@@ -46,7 +46,7 @@ public class BucketDaoImpl implements BucketDao {
     }
 
     @Override
-    public Bucket read(Integer id) {
+    public Bucket readById(Integer id) {
         Bucket bucket = null;
         try {
             preparedStatement = connection.prepareStatement(READ_BY_ID);
@@ -69,7 +69,7 @@ public class BucketDaoImpl implements BucketDao {
     }
 
     @Override
-    public Bucket read(String string) {
+    public Bucket readByString(String string) {
         throw new IllegalStateException("there is no need to read by string yet");
     }
 

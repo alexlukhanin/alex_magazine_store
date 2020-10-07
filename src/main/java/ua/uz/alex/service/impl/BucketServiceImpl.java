@@ -27,12 +27,12 @@ public class BucketServiceImpl implements BucketService {
     }
 
     @Override
-    public Bucket read(Integer id) {
+    public Bucket readById(Integer id) {
         return null;
     }
 
     @Override
-    public Bucket read(String email) {
+    public Bucket readByString(String string) {
         return null;
     }
 

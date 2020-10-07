@@ -13,6 +13,7 @@
     <a href="/">Homepage</a>
     <a href="/login.jsp">Login</a>
     <a href="/registration.jsp">Registration</a>
+    <a href="/cancel.jsp">Cancel Registration</a>
 
     <h2>Welcome to user cabinet! ${userFirstName} ${userLastName} </h2>
 
@@ -23,7 +24,7 @@
         <br>
         <label for="lastName">Last Name:</label>  <input type="text" name="lastName" class="inputName" value="${userLastName}">
         <br>
-        <label for="email">Email:</label>  <input type="text" name="email" class="loginInput" value="${userEmail}">
+        <label for="email">Email:</label>  <input type="text" name="email" class="loginInput" value="${userEmail} " readonly>
         <br>
         <label for="password1">New Password:</label>  <input type="password" name="password" id="password1" class="passInputReg1" value="${userPassword}">
         <br>

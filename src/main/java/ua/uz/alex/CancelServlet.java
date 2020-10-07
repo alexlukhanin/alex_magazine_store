@@ -14,10 +14,10 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/cancel")
+public class CancelServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    //private UserFormService userFormService = UserFormService.getUserService();
+ //   private UserFormService userFormService = UserFormService.getUserService();
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,14 +38,15 @@ public class LoginServlet extends HttpServlet {
             out.println("document.write('<a href=\"' + document.referrer + '\">Go Back</a>');");
             out.println("</script>");
         } else if(user.getPassword().equals(password)) {
-            HttpSession session = request.getSession(true);
+           /* HttpSession session = request.getSession(true);
             session.setAttribute("userEmail", email);
             session.setAttribute("userFirstName", user.getFirstName());
             session.setAttribute("userLastName", user.getLastName());
             session.setAttribute("role", user.getRole());
-            session.setAttribute("userPassword", password);
+            session.setAttribute("userPassword", password);*/
 
-            request.getRequestDispatcher("cabinet.jsp").forward(request, response);
+            userService.delete(user.getId());
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         } else {
            // response.sendRedirect("/login.jsp");
             PrintWriter out = response.getWriter();

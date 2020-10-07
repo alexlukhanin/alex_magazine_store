@@ -15,20 +15,22 @@ import java.io.IOException;
 @WebServlet("/cabinet")
 public class CabinetServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private UserFormService userFormService = UserFormService.getUserService();
+  //  private UserFormService userFormService = UserFormService.getUserService();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String password = request.getParameter("password");
-        String role = request.getParameter("role");
+        String role = "user";
 
         User user = new User(email, firstName, lastName, password, "user"); //  role only "user" for now
 //        userFormService.saveUser(user);
 
 
         UserService userService = new UserServiceImpl();
+
+
         userService.update(user); /// save to DB
 
         HttpSession session = request.getSession(true);
@@ -38,7 +40,7 @@ public class CabinetServlet extends HttpServlet {
         session.setAttribute("userPassword", password);
         session.setAttribute("role", role);
 
-       // request.getRequestDispatcher("/").forward(request, response);
+        // request.getRequestDispatcher("/").forward(request, response);
         response.sendRedirect("/");
     }
 

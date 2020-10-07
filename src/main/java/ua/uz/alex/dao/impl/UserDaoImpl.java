@@ -11,10 +11,10 @@ import java.util.List;
 public class UserDaoImpl implements UserDao {
     private static String READ_ALL = "select * from user";
     private static String CREATE = "insert into user(`email`,`first_name`, `last_name`, `role`, `password`) values (?,?,?,?,?)";
-    private static String READ_BY_EMAIL = "select * from user where email like ?";
+    private static String READ_BY_EMAIL = "select * from user where email = ?";
     private static String READ_BY_ID = "select * from user where id =?";
-    private static String UPDATE_BY_ID = "update user set email=?, first_name = ?, last_name = ?, role=?, password=?  where id = ?";
-    private static String UPDATE_BY_EMAIL = "update user set first_name = ?, last_name = ?, role=?, password=?  where email = ?";
+   // private static String UPDATE_BY_ID = "update m_shop.user set email=?, first_name = ?, last_name = ?, role=?, password=?  where id = ?";
+    private static String UPDATE_BY_EMAIL = "update m_shop.user set first_name = ?, last_name = ?, role=?, password=?  where email = ?";
     private static String DELETE_BY_ID = "delete from user where id=?";
 
     private Connection connection;
@@ -48,7 +48,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User read(Integer id) {
+    public User readById(Integer id) {
         User user = null;
         try {
             preparedStatement = connection.prepareStatement(READ_BY_ID);
@@ -72,7 +72,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User read(String email) {
+    public User readByString(String email) {
         User user = null;
         try {
             preparedStatement = connection.prepareStatement(READ_BY_EMAIL);

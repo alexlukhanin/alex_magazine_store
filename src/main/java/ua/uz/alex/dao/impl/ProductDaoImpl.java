@@ -48,7 +48,7 @@ public class ProductDaoImpl implements ProductDao {
 
 
     @Override
-    public Product read(Integer id) {
+    public Product readById(Integer id) {
         Product product = null;
         try {
             preparedStatement = connection.prepareStatement(READ_BY_ID);
@@ -70,7 +70,7 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public Product read(String name) {
+    public Product readByString(String name) {
         /*Product product = null;
         try {
             preparedStatement = connection.prepareStatement(READ_BY_ID);

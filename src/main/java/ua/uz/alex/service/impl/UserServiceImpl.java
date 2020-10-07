@@ -27,13 +27,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User read(Integer id) {
-        return null;
+    public User readById(Integer id) {
+        return userDao.readById(id);
     }
 
     @Override
-    public User read(String email) {
-        return null;
+    public User readByString(String string) {
+        return userDao.readByString(string);
     }
 
     @Override

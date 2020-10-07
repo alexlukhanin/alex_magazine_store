@@ -27,12 +27,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product read(Integer id) {
+    public Product readById(Integer id) {
         return null;
     }
 
     @Override
-    public Product read(String name) {
+    public Product readByString(String string) {
         return null;
     }
 
