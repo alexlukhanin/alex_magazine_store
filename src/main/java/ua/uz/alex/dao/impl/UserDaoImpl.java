@@ -1,5 +1,6 @@
 package ua.uz.alex.dao.impl;
 
+import org.apache.log4j.Logger;
 import ua.uz.alex.dao.UserDao;
 import ua.uz.alex.domain.User;
 import ua.uz.alex.utils.ConnectionUtils;
@@ -16,6 +17,8 @@ public class UserDaoImpl implements UserDao {
    // private static String UPDATE_BY_ID = "update m_shop.user set email=?, first_name = ?, last_name = ?, role=?, password=?  where id = ?";
     private static String UPDATE_BY_EMAIL = "update m_shop.user set first_name = ?, last_name = ?, role=?, password=?  where email = ?";
     private static String DELETE_BY_ID = "delete from user where id=?";
+
+    private static Logger LOGGER = Logger.getLogger(UserDaoImpl.class);
 
     private Connection connection;
     private PreparedStatement preparedStatement;
@@ -41,7 +44,7 @@ public class UserDaoImpl implements UserDao {
             rs.next();
             user.setId(rs.getInt(1));
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
 
         return user;
@@ -65,7 +68,7 @@ public class UserDaoImpl implements UserDao {
             user = new User(userId, email, firstName, lastName, password, role);
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
 
         return user;
@@ -89,7 +92,7 @@ public class UserDaoImpl implements UserDao {
             user = new User(userId, email, firstName, lastName, password, role);
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
 
         return user;
@@ -107,7 +110,7 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setString(5, user.getEmail());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
 
         return user;
@@ -120,7 +123,7 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
     }
 
@@ -140,7 +143,7 @@ public class UserDaoImpl implements UserDao {
                 userRecords.add(new User(userId, email, firstName, lastName, password,role));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
 
         return userRecords;

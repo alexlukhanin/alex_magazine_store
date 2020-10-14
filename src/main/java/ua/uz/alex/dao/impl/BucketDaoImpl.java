@@ -1,7 +1,10 @@
 package ua.uz.alex.dao.impl;
 
+import org.apache.log4j.Logger;
 import ua.uz.alex.dao.BucketDao;
 import ua.uz.alex.domain.Bucket;
+import ua.uz.alex.service.BucketService;
+import ua.uz.alex.service.impl.BucketServiceImpl;
 import ua.uz.alex.utils.ConnectionUtils;
 
 import java.sql.*;
@@ -12,8 +15,10 @@ public class BucketDaoImpl implements BucketDao {
     private static String READ_ALL = "select * from bucket";
     private static String CREATE = "insert into bucket(`user_id`, `product_id`, `purchase_date`) values (?,?,?)";
     private static String READ_BY_ID = "select * from bucket where id =?";
-//    private static String UPDATE_BY_ID = "update bucket set user_id=?, purc=? where id = ?";
+    //    private static String UPDATE_BY_ID = "update bucket set user_id=?, purc=? where id = ?";
     private static String DELETE_BY_ID = "delete from bucket where id=?";
+
+    private static Logger LOGGER = Logger.getLogger(BucketDaoImpl.class);
 
     private Connection connection;
     private PreparedStatement preparedStatement;
@@ -21,9 +26,7 @@ public class BucketDaoImpl implements BucketDao {
 
     public BucketDaoImpl() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         connection = ConnectionUtils.openConnection();
-
     }
-
 
 
     @Override
@@ -39,7 +42,7 @@ public class BucketDaoImpl implements BucketDao {
             rs.next();
             bucket.setId(rs.getInt(1));
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
 
         return bucket;
@@ -58,13 +61,10 @@ public class BucketDaoImpl implements BucketDao {
             Integer userId = result.getInt("user_id");
             Integer productId = result.getInt("product_id");
             java.util.Date purchaseDate = result.getDate("purchase_date");
-
             bucket = new Bucket(bucketId, userId, productId, purchaseDate);
-
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
-
         return bucket;
     }
 
@@ -76,7 +76,7 @@ public class BucketDaoImpl implements BucketDao {
     @Override
     public Bucket update(Bucket bucket) {
         throw new IllegalStateException("there is no update for bucket");
-       // return null;
+        // return null;
     }
 
     @Override
@@ -85,8 +85,8 @@ public class BucketDaoImpl implements BucketDao {
             preparedStatement = connection.prepareStatement(DELETE_BY_ID);
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            LOGGER.error(e);
         }
 
     }
@@ -105,7 +105,7 @@ public class BucketDaoImpl implements BucketDao {
                 bucketRecords.add(new Bucket(bucketId, userId, productId, purchaseDate));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
 
         return bucketRecords;

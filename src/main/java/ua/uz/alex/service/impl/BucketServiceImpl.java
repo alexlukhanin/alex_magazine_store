@@ -3,22 +3,32 @@ package ua.uz.alex.service.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import ua.uz.alex.dao.BucketDao;
 import ua.uz.alex.dao.impl.BucketDaoImpl;
 import ua.uz.alex.domain.Bucket;
 import ua.uz.alex.service.BucketService;
 
-public class BucketServiceImpl implements BucketService {
 
+public class BucketServiceImpl implements BucketService {
+    private static Logger LOGGER = Logger.getLogger(BucketServiceImpl.class);
+    private static BucketService bucketServiceImpl;
     private BucketDao bucketDao;
 
-    public BucketServiceImpl() {
-
+    private BucketServiceImpl() {
         try {
             bucketDao = new BucketDaoImpl();
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
+    }
+
+    /* ---- Singleton pattern ----- */
+    public static BucketService getBucketService() {
+        if (bucketServiceImpl == null) {
+            bucketServiceImpl = new BucketServiceImpl();
+        }
+        return bucketServiceImpl;
     }
 
     @Override

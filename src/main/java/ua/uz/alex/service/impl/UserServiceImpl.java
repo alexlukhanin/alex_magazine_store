@@ -3,21 +3,30 @@ package ua.uz.alex.service.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import ua.uz.alex.dao.UserDao;
 import ua.uz.alex.dao.impl.UserDaoImpl;
 import ua.uz.alex.domain.User;
 import ua.uz.alex.service.UserService;
 
 public class UserServiceImpl implements UserService {
-
+    private static Logger LOGGER = Logger.getLogger(UserServiceImpl.class);
+    private static UserService userServiceImpl;
     private UserDao userDao;
 
-    public UserServiceImpl() {
+    private UserServiceImpl() {
         try {
             userDao = new UserDaoImpl();
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
+    }
+    /* ---- Singleton pattern ----- */
+    public static UserService getUserService() {
+        if (userServiceImpl == null) {
+            userServiceImpl = new UserServiceImpl();
+        }
+        return userServiceImpl;
     }
 
     @Override

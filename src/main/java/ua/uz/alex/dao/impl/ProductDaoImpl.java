@@ -1,5 +1,6 @@
 package ua.uz.alex.dao.impl;
 
+import org.apache.log4j.Logger;
 import ua.uz.alex.dao.ProductDao;
 import ua.uz.alex.domain.Product;
 import ua.uz.alex.utils.ConnectionUtils;
@@ -16,6 +17,8 @@ public class ProductDaoImpl implements ProductDao {
     private static String UPDATE_BY_ID = "update product set name=?, description = ?, price = ? where id = ?";
     private static String DELETE_BY_ID = "delete from product where id=?";
 
+    private static Logger LOGGER = Logger.getLogger(ProductDaoImpl.class);
+
     private Connection connection;
     private PreparedStatement preparedStatement;
 
@@ -25,7 +28,7 @@ public class ProductDaoImpl implements ProductDao {
     }
 
 
-/// ok
+    /// ok
     @Override
     public Product create(Product product) {
         try {
@@ -34,17 +37,15 @@ public class ProductDaoImpl implements ProductDao {
             preparedStatement.setString(2, product.getDescription());
             preparedStatement.setDouble(3, product.getPrice());
             preparedStatement.executeUpdate();
-
             ResultSet rs = preparedStatement.getGeneratedKeys();
             rs.next();
             product.setId(rs.getInt(1));
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
 
         return product;
     }
-
 
 
     @Override
@@ -63,7 +64,7 @@ public class ProductDaoImpl implements ProductDao {
             product = new Product(productId, name, description, purchasePrice);
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
 
         return product;
@@ -71,20 +72,7 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public Product readByString(String name) {
-        /*Product product = null;
-        try {
-            preparedStatement = connection.prepareStatement(READ_BY_ID);
-            preparedStatement.setString(1, name);
-            ResultSet result = preparedStatement.executeQuery();
-            result.next();
-            Integer productId = result.getInt("id");
-            String description = result.getString("description");
-            Double price = result.getDouble("price");
-            product = new Product(productId, name, description, price);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return product;*/
+
         throw new IllegalStateException("there is no need to read by name");
     }
 
@@ -98,7 +86,7 @@ public class ProductDaoImpl implements ProductDao {
             preparedStatement.setInt(4, product.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
 
         return product;
@@ -111,7 +99,7 @@ public class ProductDaoImpl implements ProductDao {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
     }
 
@@ -130,7 +118,7 @@ public class ProductDaoImpl implements ProductDao {
                 productRecords.add(new Product(productId, name, description, purchasePrice));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
 
         return productRecords;

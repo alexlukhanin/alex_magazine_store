@@ -3,22 +3,33 @@ package ua.uz.alex.service.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import ua.uz.alex.dao.ProductDao;
 import ua.uz.alex.dao.impl.ProductDaoImpl;
 import ua.uz.alex.domain.Product;
 import ua.uz.alex.service.ProductService;
 
+
 public class ProductServiceImpl implements ProductService {
+    private static Logger LOGGER = Logger.getLogger(ProductServiceImpl.class);
+    private static ProductService productServiceImpl;
     private ProductDao productDao;
 
-    public ProductServiceImpl() {
+    private ProductServiceImpl() {
 
         try {
             productDao = new ProductDaoImpl();
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
+    }
 
+    /* ---- Singleton pattern ----- */
+    public static ProductService getProductService() {
+        if (productServiceImpl == null) {
+            productServiceImpl = new ProductServiceImpl();
+        }
+        return productServiceImpl;
     }
 
     @Override
