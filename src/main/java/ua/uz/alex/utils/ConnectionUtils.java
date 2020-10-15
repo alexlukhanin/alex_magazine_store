@@ -13,6 +13,7 @@ public class ConnectionUtils {
 	private static String URL = "jdbc:mysql://localhost/m_shop";
 
 	public static Connection openConnection() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		//java.net.URL loggerConfig = ConnectionUtils.class.getClassLoader().getResource("loggerConfig.xml");
 		DOMConfigurator.configure("loggerConfig.xml");
 		Class.forName ("com.mysql.cj.jdbc.Driver").newInstance ();
 		return DriverManager.getConnection (URL, USER_NAME, USER_PASSWORD);
