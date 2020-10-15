@@ -78,7 +78,6 @@
 
 <div class="footerDiv">
     <jsp:include page="footer.jsp"></jsp:include>
-
 </div>
 
 
