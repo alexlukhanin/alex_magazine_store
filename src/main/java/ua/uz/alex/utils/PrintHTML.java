@@ -2,7 +2,7 @@ package ua.uz.alex.utils;
 
 import java.io.PrintWriter;
 
-
+@Deprecated
 public class PrintHTML {
 
 

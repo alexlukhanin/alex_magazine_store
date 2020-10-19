@@ -12,30 +12,44 @@
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/footer.css">
-<%--    <link rel="stylesheet" href="css/style.css">--%>
+
     <title>Alex Magazine-store</title>
 </head>
 <body>
-<div class="headerDiv"><jsp:include page="header.jsp"></jsp:include></div>
+<jsp:include page="header.jsp"></jsp:include>
 
 <div class="login-page">
     <div class="form">
         <form class="register-form">
-            <input type="text" placeholder="name"/>
-            <input type="password" placeholder="password"/>
-            <input type="text" placeholder="email address"/>
-            <button>create</button>
+            <input class="firstName" type="text" placeholder="first name"/>
+            <input class="lastName" type="text" placeholder="last name"/>
+            <input class="email" type="text" placeholder="email address"/>
+            <input class="password" type="password" placeholder="password"/>
+            <input class="cpassword" type="password" placeholder="confirm password"/>
+            <button class="register">create</button>
             <p class="message">Already registered? <a href="#">Sign In</a></p>
         </form>
         <form class="login-form">
-            <input type="text" placeholder="username"/>
-            <input type="password" placeholder="password"/>
-            <button>login</button>
+            <input class="email" type="text" placeholder="email address"/>
+            <input class="password" type="password" placeholder="password"/>
+            <button class="login">login</button>
             <p class="message">Not registered? <a href="#">Create an account</a></p>
         </form>
     </div>
+    <div class="alert alert-success" role="alert">
+        <b>Success!</b> You are registered.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="alert alert-loginFailed" role="alert">
+        <b>Login failed</b> Try again!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 </div>
-<div class="footerDiv"> <jsp:include page="footer.jsp"></jsp:include> </div>
+ <jsp:include page="footer.jsp"></jsp:include>
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
@@ -57,57 +71,3 @@
 </body>
 </html>
 
-
-<%--<div class="mainDiv">
-    <h3> Login, please </h3>
-    <form action="login" method="post" id="loginForm">
-        <label for="login">Email:</label>  <input type="text" name="login" class="loginInput">
-        <br>
-        <label for="password">Password:</label>  <input type="password" name="password" class="passInput">
-        <br>
-        <input type="submit" value="Submit">
-        <br>
-        <a href="/registration.jsp">Registration</a>
-        <a href="/">Homepage</a>
-    </form>
-    <p>
-        Entered the page at <%= new java.util.Date() %>
-    </p>
-</div>--%>
-
-
-
-
-
-
-
-<%--<html>
-<body>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
-<div class="headerDiv">
-    <jsp:include page="header.jsp"></jsp:include>
-
-</div>
-
-<div class="mainDiv">
-    <a href="/login.jsp">Login</a>
-    <a href="/registration.jsp">Registration</a>
-
-    <h2>Welcome!</h2>
-
-
-    <img src="images/photo1.jpg" alt="magazines" id="photo1">
-    <p>
-        Entered the page at <%= new java.util.Date() %>
-    </p>
-
-</div>
-
-<div class="footerDiv">
-    <jsp:include page="footer.jsp"></jsp:include>
-
-</div>
-
-
-</body>
-</html>--%>

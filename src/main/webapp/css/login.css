@@ -98,3 +98,11 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+div.login-page div.alert.alert-success{
+    display: none;
+}
+
+div.login-page div.alert.alert-loginFailed{
+    display: none;
+}

@@ -2,11 +2,7 @@
 <html>
 
 <body>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
-<div class="headerDiv">
     <jsp:include page="header.jsp"></jsp:include>
-
-</div>
 
 <div class="mainDiv">
     <h3> Register, please </h3>

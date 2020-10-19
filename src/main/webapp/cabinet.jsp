@@ -3,11 +3,10 @@
 
 <html>
 <body>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
-<div class="headerDiv">
+
     <jsp:include page="header.jsp"></jsp:include>
 
-</div>
+
 
 <div class="mainDiv">
     <a href="/">Homepage</a>
@@ -76,9 +75,9 @@
 
 </div>
 
-<div class="footerDiv">
+
     <jsp:include page="footer.jsp"></jsp:include>
-</div>
+
 
 
 </body>
