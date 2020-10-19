@@ -72,6 +72,7 @@ $("button.login").click(function () {
                 $("form")[0].reset();
                 $("form")[1].reset();
                 loginRegisterSwitch();
+                alert("Login Failed! Try again.");
                 showAlertAfterLoginFailed();
 
             } else if (data == 'Login success') {
