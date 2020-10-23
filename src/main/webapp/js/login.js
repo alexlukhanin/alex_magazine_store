@@ -6,7 +6,6 @@ function loginRegisterSwitch() {
 }
 
 
-
 function showAlertAfterRegistration() {
     $('div.alert.alert-success').show();
 }
@@ -66,27 +65,18 @@ $("button.login").click(function () {
             email: email,
             password: password
         };
-
         $.post("login", userLogin, function (data) {
-            if(data == 'Login failed') {
-                $("form")[0].reset();
+            if (data == 'Login failed') {
+              //  $("form")[0].reset();
                 $("form")[1].reset();
                 loginRegisterSwitch();
                 alert("Login Failed! Try again.");
                 showAlertAfterLoginFailed();
-
             } else if (data == 'Login success') {
-               /* let customUrl = '';
-                let urlContent = window.location.href.split('/');
-                for (let i = 0; i < urlContent.length - 1; i++) {
-                    customUrl += urlContent[i] + '/'
-                }*/
+                $("form")[1].reset();
                 let customUrl = "/cabinet.jsp";
                 window.location = customUrl;
-              //  $("form")[1].reset();
             }
-
-            // $("form")[0].reset();
         });
     }
 });

@@ -25,29 +25,11 @@ public class RegistrationServlet extends HttpServlet {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String password = request.getParameter("password");
-        String role =  UserRole.USER.toString();
+        String role = UserRole.USER.toString();
 
-/*
-        try {
-            throw new Exception("Test error");
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }*/
-
-
-
-        if(!email.isEmpty()&& !firstName.isEmpty()&&!lastName.isEmpty()&&!password.isEmpty()) {
-            if (userService.readByString(email)==null) {
+        if (!email.isEmpty() && !firstName.isEmpty() && !lastName.isEmpty() && !password.isEmpty()) {
+            if (userService.readByString(email) == null) {
                 userService.create(new User(email, firstName, lastName, password, role));
-
-             /*   HttpSession session = request.getSession(true);
-                session.setAttribute("userEmail", email);
-                session.setAttribute("userFirstName", firstName);
-                session.setAttribute("userLastName", lastName);
-                session.setAttribute("role", role);
-                session.setAttribute("userPassword", password);
-*/
-             //   response.sendRedirect("/cabinet.jsp");
                 response.setContentType("text/plain");
                 response.setCharacterEncoding("UTF-8");
                 response.getWriter().write("Success");

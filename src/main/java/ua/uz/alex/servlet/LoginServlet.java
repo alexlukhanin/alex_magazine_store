@@ -1,6 +1,5 @@
 package ua.uz.alex.servlet;
 
-import com.google.gson.Gson;
 import org.apache.log4j.Logger;
 import ua.uz.alex.domain.User;
 import ua.uz.alex.dto.UserLogin;
@@ -25,38 +24,27 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        // test block!!!
-
+        // test block for Logger
         int integerValueForTest = 0;
         try {
-            integerValueForTest = 5/0;
+            integerValueForTest = 5 / 0;
         } catch (Exception e) {
             LOGGER.error(e);
         }
         // ==============================
 
-
         User user = userService.readByString(email);
-
         if (user != null && user.getPassword().equals(password)) {
             UserLogin userLogin = new UserLogin();
             userLogin.destinationUrl = "cabinet.jsp";
             userLogin.userEmail = user.getEmail();
-           /* String json = new Gson().toJson(userLogin);
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(json);*/
             response.setContentType("text/plain");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write("Login success");
         } else {
-           // response.sendRedirect("/index.jsp");
             response.setContentType("text/plain");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write("Login failed");
         }
-
-
-
     }
 }
