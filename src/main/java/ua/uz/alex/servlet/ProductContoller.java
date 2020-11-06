@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/product")
-public class ProductServlet extends HttpServlet {
+public class ProductContoller extends HttpServlet {
     ProductService productService = ProductServiceImpl.getProductService();
 
     private double getValidatedPrice(String price) {
@@ -29,7 +29,7 @@ public class ProductServlet extends HttpServlet {
         String price = request.getParameter("price");
 
         Product product  = new Product(name, description, getValidatedPrice(price));
-        productService.create(product );
+        productService.create(product);
         response.setContentType("text");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write("Success");
