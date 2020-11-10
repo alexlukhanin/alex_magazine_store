@@ -1,4 +1,4 @@
-package ua.uz.alex.servlet;
+package ua.uz.alex.contloller;
 
 import com.google.gson.Gson;
 import ua.uz.alex.domain.Product;
@@ -13,11 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-
 @WebServlet("/products")
-public class ProductsServlet extends HttpServlet {
-
-
+public class ProductsController extends HttpServlet {
     private ProductService productService = ProductServiceImpl.getProductService();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, IOException {
@@ -27,5 +24,6 @@ public class ProductsServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);
     }
+
 
 }

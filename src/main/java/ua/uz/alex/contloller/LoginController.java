@@ -1,4 +1,4 @@
-package ua.uz.alex.servlet;
+package ua.uz.alex.contloller;
 
 import org.apache.log4j.Logger;
 import ua.uz.alex.domain.User;
@@ -11,33 +11,31 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+public class LoginController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private UserService userService = UserServiceImpl.getUserService();
-    private static Logger LOGGER = Logger.getLogger(LoginServlet.class);
+    private static Logger LOGGER = Logger.getLogger(LoginController.class);
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        // test block for Logger
-        int integerValueForTest = 0;
-        try {
-            integerValueForTest = 5 / 0;
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }
-        // ==============================
+
 
         User user = userService.readByString(email);
         if (user != null && user.getPassword().equals(password)) {
-            UserLogin userLogin = new UserLogin();
-            userLogin.destinationUrl = "cabinet.jsp";
-            userLogin.userEmail = user.getEmail();
+            HttpSession session= request.getSession(true);
+            session.setAttribute("email", user.getEmail());
+            session.setAttribute("id", user.getId());
+            session.setAttribute("fullName", user.getFirstName()
+                    + " " +  user.getLastName());
+
+          //  UserLogin userLogin = new UserLogin(user.getEmail(),"cabinet.jsp");
             response.setContentType("text/plain");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write("Login success");

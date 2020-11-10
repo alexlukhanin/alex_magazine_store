@@ -5,7 +5,6 @@ function loginRegisterSwitch() {
     }, "slow");
 }
 
-
 function showAlertAfterRegistration() {
     $('div.alert.alert-success').show();
 }
@@ -67,15 +66,13 @@ $("button.login").click(function () {
         };
         $.post("login", userLogin, function (data) {
             if (data == 'Login failed') {
-              //  $("form")[0].reset();
                 $("form")[1].reset();
                 loginRegisterSwitch();
                 alert("Login Failed! Try again.");
                 showAlertAfterLoginFailed();
             } else if (data == 'Login success') {
                 $("form")[1].reset();
-                let customUrl = "/cabinet.jsp";
-                window.location = customUrl;
+                window.location = "/cabinet.jsp";
             }
         });
     }

@@ -11,10 +11,11 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav animate side-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/cabinet.jsp">Home
+                    <a class="nav-link" href="${pageContext.request.contextPath}/cabinet.jsp">Magazines list
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/createProduct.jsp">Add Magazine</a>
                 </li>
@@ -24,10 +25,12 @@
             </ul>
             <ul class="navbar-nav ml-md-auto d-md-flex">
                 <li class="nav-item">
-                    <button class="nav-link product-logout">Logout</button>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/logout.jsp">Logout</a>
                 </li>
             </ul>
         </div>
     </nav>
 
 </div>
+
+

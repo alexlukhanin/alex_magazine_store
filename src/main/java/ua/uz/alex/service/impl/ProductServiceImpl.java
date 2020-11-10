@@ -39,12 +39,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product readById(Integer id) {
-        return null;
+        return productDao.readById(id);
     }
 
     @Override
     public Product readByString(String string) {
-        return null;
+        return productDao.readByString(string);
     }
 
 

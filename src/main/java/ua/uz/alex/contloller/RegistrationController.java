@@ -1,4 +1,4 @@
-package ua.uz.alex.servlet;
+package ua.uz.alex.contloller;
 
 import org.apache.log4j.Logger;
 import ua.uz.alex.domain.User;
@@ -15,9 +15,9 @@ import java.io.IOException;
 
 
 @WebServlet("/registration")
-public class RegistrationServlet extends HttpServlet {
+public class RegistrationController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private static Logger LOGGER = Logger.getLogger(RegistrationServlet.class);
+    private static Logger LOGGER = Logger.getLogger(RegistrationController.class);
     private UserService userService = UserServiceImpl.getUserService();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

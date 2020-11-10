@@ -5,10 +5,8 @@ $.get("products", function(data) {
 		products = data;
 	}
 }).done(function() {
-	
 	let cardsContent = "";
 	jQuery.each(products, function(i, value) {
-	
 		cardsContent+="<div class='col'>" +
 					  "<div class='card'>" +
 					  "<div class='card-body'>" +
@@ -21,7 +19,7 @@ $.get("products", function(data) {
 					  "</div>" +
 					  "</div>"
 	});
-	
+
 	  $('#productCards').html(cardsContent);
-	
+
 });

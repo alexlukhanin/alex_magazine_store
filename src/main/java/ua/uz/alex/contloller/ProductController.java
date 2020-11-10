@@ -1,4 +1,4 @@
-package ua.uz.alex.servlet;
+package ua.uz.alex.contloller;
 
 import ua.uz.alex.domain.Product;
 import ua.uz.alex.service.ProductService;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/product")
-public class ProductContoller extends HttpServlet {
+public class ProductController extends HttpServlet {
     ProductService productService = ProductServiceImpl.getProductService();
 
     private double getValidatedPrice(String price) {
@@ -36,7 +36,12 @@ public class ProductContoller extends HttpServlet {
     }
     @Override   // to read resource (product)
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String productId = request.getParameter("id");
 
+        Product product = productService.readById(Integer.parseInt(productId));
+
+        request.setAttribute("product", product);
+        request.getRequestDispatcher("product.jsp").forward(request, response);
     }
 
     @Override   // to update resource (product)
