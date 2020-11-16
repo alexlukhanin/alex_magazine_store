@@ -11,6 +11,7 @@ import java.util.List;
 
 public class ProductDaoImpl implements ProductDao {
     private static String READ_ALL = "select * from product";
+    private static String READ_ALL_SORTED_BY_NAME = "select * from product order by name";
     private static String CREATE = "insert into product(`name`, `description`, `price`) values (?,?,?)";
     private static String READ_BY_ID = "select * from product where id =?";
     private static String READ_BY_NAME = "select * from product where name =?";
@@ -107,7 +108,7 @@ public class ProductDaoImpl implements ProductDao {
     public List<Product> readAll() {
         List<Product> productRecords = new ArrayList<>();
         try {
-            preparedStatement = connection.prepareStatement(READ_ALL);
+            preparedStatement = connection.prepareStatement(READ_ALL_SORTED_BY_NAME);
             ResultSet result = preparedStatement.executeQuery();
             while (result.next()) {
                 Integer productId = result.getInt("id");

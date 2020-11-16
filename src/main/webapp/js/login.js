@@ -66,7 +66,7 @@ $("button.login").click(function () {
         };
         $.post("login", userLogin, function (data) {
             if (data == 'Login failed') {
-                $("form")[1].reset();
+                 $("form")[1].reset();
                 loginRegisterSwitch();
                 alert("Login Failed! Try again.");
                 showAlertAfterLoginFailed();

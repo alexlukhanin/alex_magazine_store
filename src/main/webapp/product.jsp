@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/cabinet.css">
-    <script src="js/header.js"></script>
+<%--    <script src="js/header.js"></script>--%>
 
 </head>
 <body>
@@ -86,8 +86,8 @@
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
-
-<script src="js/productOperations.js"></script>
+<script src="js/header.js"></script>
+<script src="js/product_service.js"></script>
 
 </body>
 </html>

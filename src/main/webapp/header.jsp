@@ -17,10 +17,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/createProduct.jsp">Add Magazine</a>
+                    <a class="nav-link admin-element" href="${pageContext.request.contextPath}/createProduct.jsp">Add Magazine</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/bucket.jsp">Bucket</a>
+                    <a class="nav-link user-element" href="${pageContext.request.contextPath}/bucket.jsp">Bucket</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-md-auto d-md-flex">
@@ -32,5 +32,6 @@
     </nav>
 
 </div>
+
 
 

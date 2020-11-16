@@ -2,6 +2,9 @@ package ua.uz.alex.service.impl;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 import ua.uz.alex.dao.ProductDao;
@@ -63,4 +66,8 @@ public class ProductServiceImpl implements ProductService {
         return productDao.readAll();
     }
 
+    @Override
+    public Map<Integer, Product> readAllMap() {
+        return  readAll().stream().collect(Collectors.toMap(Product::getId, Function.identity()));
+    }
 }

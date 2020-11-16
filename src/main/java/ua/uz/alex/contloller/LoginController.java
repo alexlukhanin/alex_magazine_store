@@ -2,7 +2,6 @@ package ua.uz.alex.contloller;
 
 import org.apache.log4j.Logger;
 import ua.uz.alex.domain.User;
-import ua.uz.alex.dto.UserLogin;
 import ua.uz.alex.service.UserService;
 import ua.uz.alex.service.impl.UserServiceImpl;
 
@@ -32,6 +31,7 @@ public class LoginController extends HttpServlet {
             HttpSession session= request.getSession(true);
             session.setAttribute("email", user.getEmail());
             session.setAttribute("id", user.getId());
+            session.setAttribute("role", user.getRole());
             session.setAttribute("fullName", user.getFirstName()
                     + " " +  user.getLastName());
 
