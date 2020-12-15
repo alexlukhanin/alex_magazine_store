@@ -1,10 +1,25 @@
 package ua.uz.alex.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "product")
 public class Product {
+    @Id
+    @GeneratedValue
     private Integer id;
+
+    @Column // not necessary
     private String name;
+
+    @Column // not necessary
     private String description;
+
+    @Column  // not necessary
     private Double price;
+
+    // must have none-arg constructor
+    public Product() {}
 
     public Product(Integer id, String name, String description, Double price) {
         this.id = id;
@@ -18,6 +33,7 @@ public class Product {
         this.description = description;
         this.price = price;
     }
+
 
     public Integer getId() {
         return id;

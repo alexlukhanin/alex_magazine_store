@@ -1,26 +1,27 @@
 package ua.uz.alex.domain;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name="bucket")
 public class Bucket {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer userId;
-    private  Integer productId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private  Product product;
+
+    @Column(name = "purchase_date")
     private Date purchaseDate;
 
-    public Bucket(Integer id, Integer userId, Integer productId, Date purchaseDate) {
-        this.id = id;
-        this.userId = userId;
-        this.productId = productId;
-        this.purchaseDate = purchaseDate;
-    }
-
-    public Bucket(Integer userId, Integer productId, Date purchaseDate) {
-        this.userId = userId;
-        this.productId = productId;
-        this.purchaseDate = purchaseDate;
-    }
+    public Bucket() {}
 
     public Integer getId() {
         return id;
@@ -30,20 +31,20 @@ public class Bucket {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Integer getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Date getPurchaseDate() {
@@ -55,36 +56,11 @@ public class Bucket {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Bucket bucket = (Bucket) o;
-
-        if (id != null ? !id.equals(bucket.id) : bucket.id != null) return false;
-        if (userId != null ? !userId.equals(bucket.userId) : bucket.userId != null) return false;
-        if (productId != null ? !productId.equals(bucket.productId) : bucket.productId != null) return false;
-        if (purchaseDate != null ? !purchaseDate.equals(bucket.purchaseDate) : bucket.purchaseDate != null)
-            return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (userId != null ? userId.hashCode() : 0);
-        result = 31 * result + (productId != null ? productId.hashCode() : 0);
-        result = 31 * result + (purchaseDate != null ? purchaseDate.hashCode() : 0);
-        return result;
-    }
-
-    @Override
     public String toString() {
         return "Bucket{" +
-                "id=" + id +
-                ", userId=" + userId +
-                ", productId=" + productId +
+                "id='" + id + '\'' +
+                ", user=" + user +
+                ", product=" + product +
                 ", purchaseDate=" + purchaseDate +
                 '}';
     }

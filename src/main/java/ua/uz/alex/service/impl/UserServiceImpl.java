@@ -15,11 +15,7 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     private UserServiceImpl() {
-        try {
-            userDao = new UserDaoImpl();
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-            LOGGER.error(e);
-        }
+        userDao = new UserDaoImpl();
     }
     /* ---- Singleton pattern ----- */
     public static UserService getUserService() {

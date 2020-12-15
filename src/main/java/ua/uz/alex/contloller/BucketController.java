@@ -25,7 +25,6 @@ public class BucketController extends HttpServlet {
     private BucketService bucketService = BucketServiceImpl.getBucketService();
     private ProductService productService = ProductServiceImpl.getProductService();
 
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Bucket> buckets = bucketService.readAll();
         Map<Integer, Product> idToProduct = productService.readAllMap();
@@ -37,7 +36,6 @@ public class BucketController extends HttpServlet {
         response.getWriter().write(json);
     }
 
-
     public List<BucketDto> map(List<Bucket> buckets, Map<Integer, Product> idToProduct){
 
         return	buckets.stream().map(bucket->{
@@ -45,7 +43,7 @@ public class BucketController extends HttpServlet {
             bucketDto.bucketId = bucket.getId();
             bucketDto.purchaseDate = bucket.getPurchaseDate();
 
-            Product product = idToProduct.get(bucket.getProductId());
+            Product product = idToProduct.get(bucket.getProduct().getId()); // changed
             bucketDto.name = product.getName();
             bucketDto.description = product.getDescription();
             bucketDto.price = product.getPrice();

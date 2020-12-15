@@ -20,6 +20,7 @@ $("button.createProduct")
 									alert('Success');
 								}
 							});
+
 					}
 				});
 

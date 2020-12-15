@@ -18,14 +18,7 @@ public class ProductServiceImpl implements ProductService {
     private static ProductService productServiceImpl;
     private ProductDao productDao;
 
-    private ProductServiceImpl() {
-
-        try {
-            productDao = new ProductDaoImpl();
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-            LOGGER.error(e);
-        }
-    }
+    private ProductServiceImpl() {  productDao = new ProductDaoImpl();  }
 
     /* ---- Singleton pattern ----- */
     public static ProductService getProductService() {

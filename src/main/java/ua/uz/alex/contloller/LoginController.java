@@ -24,8 +24,6 @@ public class LoginController extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-
-
         User user = userService.readByString(email);
         if (user != null && user.getPassword().equals(password)) {
             HttpSession session= request.getSession(true);
@@ -35,7 +33,6 @@ public class LoginController extends HttpServlet {
             session.setAttribute("fullName", user.getFirstName()
                     + " " +  user.getLastName());
 
-          //  UserLogin userLogin = new UserLogin(user.getEmail(),"cabinet.jsp");
             response.setContentType("text/plain");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write("Login success");

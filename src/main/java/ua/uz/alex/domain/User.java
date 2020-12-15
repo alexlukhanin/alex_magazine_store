@@ -1,12 +1,30 @@
 package ua.uz.alex.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "user")
 public class User {
+    @Id
+    @GeneratedValue
     private Integer id;
+    @Column
     private String email;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @Column // not necessary
     private String password;
+
+    @Column // not necessary
     private String role;
+
+    // must have none-arg constructor
+    public User() {}
 
     public User(Integer id, String email, String firstName, String lastName, String password, String role) {
         this.id = id;
